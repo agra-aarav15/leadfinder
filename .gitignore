@@ -1,0 +1,18 @@
+# secrets & local state - never commit
+.env
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# tooling
+.zcode/
+node_modules/
+*.log
+.DS_Store
