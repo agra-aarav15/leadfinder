@@ -1,12 +1,35 @@
 # ⚡ LeadFinder
 
-An autonomous lead-generation and conversion pipeline: it **finds** businesses on the open
-web, **reaches out**, **talks to them in real time** (outreach replies + live chat widget on
-your own site), **qualifies & converts** them, and shows you every detail in a command-center
-dashboard.
+> **The vision:** every business deserves a tireless growth team. LeadFinder is that
+> team as software — an autonomous employee that **hunts** real businesses on the map
+> and the open web, **pitches** them in your voice, **converses** with them in real
+> time until they're ready, **closes** the ones who bite, and files every detail —
+> name, email, phone, transcript, score — in a command center you actually enjoy opening.
+> It runs on free infrastructure forever, plays by the rules (opt-out, disclosure,
+> rate limits), and never sleeps.
 
-Built 100% on free-forever infrastructure: SQLite, free web scraping, local AI via Ollama,
-and a free mailbox. No paid services required.
+An autonomous lead-generation and conversion pipeline: it **finds** businesses on the map
+and open web, **reaches out**, **talks to them in real time** (outreach replies + live chat
+widget on your own site), **qualifies & converts** them, and shows you every detail in a
+command-center dashboard.
+
+Built 100% on free-forever infrastructure: SQLite, headless-browser scraping, local AI via
+Ollama, and a free mailbox. No paid services required.
+
+---
+
+## Where it goes (roadmap)
+
+- **Phase 1 — shipped.** Maps + web discovery, AI email sequences with auto-replies,
+  real-time site chat agent, auto-hunt scheduler, compliance engine, glass dashboard.
+- **Phase 2 — plug in and go.** Install Ollama (`ollama pull llama3.1`) for genuinely
+  human-like conversation; add a free Gmail app-password to `.env` to move from dry-run
+  to live sending.
+- **Phase 3 — more channels.** Voice calling via AI phone adapters (Twilio/Vapi),
+  WhatsApp Cloud API, and browser-automated social DMs — each slots into the same
+  conversation/lead pipeline.
+- **Phase 4 — 24/7 in the cloud.** Deploy to any free-tier VM so hunting continues
+  while your laptop sleeps; multi-client/white-label mode for agencies.
 
 ---
 

@@ -5,6 +5,7 @@ Dry-run by default: until SMTP/IMAP env vars are set, every email is
 test the whole pipeline safely before connecting a real free mailbox.
 """
 import email as email_lib
+import email.header
 import email.utils
 import imaplib
 import logging
@@ -214,6 +215,17 @@ def _ai_reply(lead, history_text: str, incoming: str) -> str | None:
     return brain.ask(system, f"Conversation so far:\n{history_text}\n\nNew message from lead:\n{incoming}")
 
 
+def _decode_subject(msg) -> str:
+    raw = msg.get("Subject", "") or ""
+    try:
+        out = ""
+        for data, enc in email.header.decode_header(raw):
+            out += data.decode(enc or "utf-8", "ignore") if isinstance(data, bytes) else data
+        return out
+    except Exception:
+        return str(raw)
+
+
 def poll_inbox_once() -> int:
     """Read unseen mail, thread it to the right lead, auto-reply with AI."""
     mc = mail_config()
@@ -230,7 +242,7 @@ def poll_inbox_once() -> int:
             raw = msg_data[0][1]
             msg = email_lib.message_from_bytes(raw)
             from_hdr = email.utils.parseaddr(msg.get("From", ""))[1].lower()
-            subj = str(email.header.decode_header(msg.get("Subject", ""))[0][0] or "") if msg.get("Subject") else ""
+            subj = _decode_subject(msg)
             body = ""
             if msg.is_multipart():
                 for part in msg.walk():
